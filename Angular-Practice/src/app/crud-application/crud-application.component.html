@@ -1,0 +1,114 @@
+<div class="container">
+    <mat-card>
+        <h2>Add User Data</h2>
+        <form #myForm [formGroup]="login" (ngSubmit)="onSubmit(myForm)">
+            <mat-form-field class="input-field" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First Name" formControlName="firstName"
+                    [ngClass]="{ 'is-invalid': submitted && firstName.errors }" />
+                <mat-error *ngIf="firstName.invalid">Enter First Name</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="input-field" appearance="outline">
+                <mat-label>Center</mat-label>
+                <mat-select formControlName="center" name="center">
+                    <mat-option *ngFor="let center of centers" [value]="center">
+                        {{center}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="submitted && center.errors">
+                    Center is Required.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="input-field" appearance="outline">
+                <mat-label>Enter Your Email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="email"
+                    [ngClass]="{ 'is-invalid': submitted && email.errors }" />
+                <mat-error *ngIf="email.invalid">Invalid Email</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="input-field" appearance="outline">
+                <mat-label>Leave a Comment</mat-label>
+                <textarea matInput formControlName="comment" placeholder="Leave a comment"></textarea>
+                <mat-error *ngIf="submitted && center.errors">
+                    Comment is Required.
+                </mat-error>
+            </mat-form-field>
+
+            <!-- <mat-form-field class="input-field" appearance="outline">
+                <mat-label>Choose a Date</mat-label>
+                <input matInput formControlName="date" [matDatepicker]="picker" [min]='minDate'>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="submitted && center.errors">
+                    Date is Required.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-accordion class="mt-2">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-label>Select Department</mat-label>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-selection-list #shoes [multiple]="false" formControlName="dept" appearance="outline">
+
+                        <mat-list-option *ngFor="let dept of depts" [value]="dept">
+                            {{dept}}
+                        </mat-list-option>
+                        <mat-error *ngIf="submitted && center.errors">
+                            Dept is Required.
+                        </mat-error>
+                    </mat-selection-list>
+                    <p>
+                        Department selected: {{shoes.selectedOptions.selected[0]?.value}}
+                    </p>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-selection-list #stationarys formControlName="stationary" class="mt-4">
+                <mat-label>Select Stationary Material</mat-label>
+                <mat-list-option *ngFor="let stationary of stationaryMaterial" [value]="stationary">
+                    {{stationary}}
+                </mat-list-option>
+                <mat-error *ngIf="submitted && stationary.errors">
+                    Stationary Material is Required.
+                </mat-error>
+            </mat-selection-list>
+            <p>
+                Material Selected: {{stationarys.selectedOptions.selected.length}}
+            </p>
+
+            <div class="mt-4">
+                <mat-label class="mt-2">Progress-Bar</mat-label>
+                <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+            </div>
+
+            <div class="mt-4">
+                <mat-radio-group formControlName="gender">
+                    <mat-label class="mx-2">Gender--</mat-label>
+                    <mat-radio-button *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-radio-button>
+                </mat-radio-group>
+                <mat-error *ngIf="submitted && gender.errors">
+                    Gender is Required.
+                </mat-error>
+            </div>
+
+            <section class="example-section mt-4">
+                <mat-checkbox formControlName="checkbox" class="example-margin">I Agree</mat-checkbox>
+                <mat-error *ngIf="submitted && checkbox.errors">
+                    Checkbox is Required.
+                </mat-error>
+            </section> -->
+
+            <div class="example-button-row mt-4">
+                <mat-spinner *ngIf="showSpinner"></mat-spinner>
+                <button mat-raised-button color="primary">Submit</button>
+                <button mat-raised-button color="accent" (click)="reset()" class="mx-2">Reset</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

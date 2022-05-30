@@ -1,0 +1,212 @@
+<div class="landing-page">
+    <mat-card>
+        <div class="row">
+            <div class="col-lg-2 col-sm-4 d-flex">
+                <div class="mat-icon d-flex">
+                    <mat-icon class="mx-2">account_balance</mat-icon>RealEstate
+                </div>
+            </div>
+            <div class="col-lg-8 col-sm-4">
+                <mat-tab-group mat-align-tabs="start">
+                    <mat-tab label="Search"></mat-tab>
+                    <mat-tab label="About"></mat-tab>
+                    <mat-tab label="Help"></mat-tab>
+                    <mat-tab label="Real Estate Agents"></mat-tab>
+                </mat-tab-group>
+            </div>
+            <div class="col-lg-2 col-sm-4 d-flex">
+                <mat-icon>favorite</mat-icon>
+                <img src="../../assets/img/men.png" class="mat-icon rounded-circle mx-5">
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-2">
+                <mat-form-field appearance="outline" class="search">
+                    <mat-label>Enter an address</mat-label>
+                    <input matInput>
+                    <mat-icon matPrefix>search</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div class="col-lg-10">
+                <mat-form-field class="select" appearance="fill">
+                    <mat-label>For sale</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let center of centers">
+                            {{center}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="select" appearance="fill">
+                    <mat-label>Type:House</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let center of centers">
+                            {{center}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="select" appearance="fill">
+                    <mat-label>Max Prise:$7000k</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let center of centers">
+                            {{center}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="select" appearance="fill">
+                    <mat-label>Min Prise:$5000k</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let center of centers">
+                            {{center}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="select" appearance="fill">
+                    <mat-label>Flore Area</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let center of centers">
+                            {{center}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="select" appearance="fill">
+                    <mat-label>More</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let center of centers">
+                            {{center}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <mat-card class="example-card">
+                            <img mat-card-image src="../../assets/img/home1.jpg" alt="img1">
+                            <div class="buttons-overlap">
+                                <button class="btn btn-success mt-2">New</button>
+                                <button class="btn btn-primary mx-2 mt-2">For sale</button>
+                                <button class="btn btn-light button-icons mt-2">
+                                    <mat-icon class="favorite-icon">favorite</mat-icon>
+                                </button>
+                            </div>
+                            <mat-card-content>
+                                <h2>$622000</h2>
+                                <p>3517 W.Gray St.Utica,Pennsylvania57867</p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button>
+                                    <mat-icon>home</mat-icon>2
+                                </button>
+                                <button mat-button>
+                                    <mat-icon>stars</mat-icon>2
+                                </button>
+                                <button mat-button>
+                                    <mat-icon>store</mat-icon>2
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                    <div class="col-lg-6">
+                        <mat-card class="example-card">
+                            <img mat-card-image src="../../assets/img/home2.jpg" alt="img1">
+                            <div class="buttons-overlap">
+                                <button class="btn btn-primary mt-2">For sale</button>
+                                <button class="btn btn-light mt-2 icon-button">
+                                    <mat-icon class="favorite-icon">favorite</mat-icon>
+                                </button>
+                            </div>
+                            <mat-card-content>
+                                <h2>$622000</h2>
+                                <p>3517 W.Gray St.Utica,Pennsylvania57867</p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button>
+                                    <mat-icon>home</mat-icon>2
+                                </button>
+                                <button mat-button>
+                                    <mat-icon>stars</mat-icon>2
+                                </button>
+                                <button mat-button>
+                                    <mat-icon>store</mat-icon>2
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-lg-6">
+                        <mat-card class="example-card">
+                            <img mat-card-image src="../../assets/img/home3.jpg" alt="img1">
+                            <div class="buttons-overlap">
+                                <button class="btn btn-primary mt-2">For sale</button>
+                                <button class="btn btn-light mt-2 icon-button">
+                                    <mat-icon class="favorite-icon">favorite</mat-icon>
+                                </button>
+                            </div>
+                            <mat-card-content>
+                                <h2>$553835</h2>
+                                <p>3517 W.Gray St.Utica,Pennsylvania57867</p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button>
+                                    <mat-icon>home</mat-icon>2
+                                </button>
+                                <button mat-button>
+                                    <mat-icon>stars</mat-icon>2
+                                </button>
+                                <button mat-button>
+                                    <mat-icon>store</mat-icon>2
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                    <div class="col-lg-6">
+                        <mat-card class="example-card">
+                            <img mat-card-image src="../../assets/img/home4.jpg" alt="img1">
+                            <div class="buttons-overlap">
+                                <button class="btn btn-primary mt-2">For sale</button>
+                                <button class="btn btn-light mt-2 icon-button">
+                                    <mat-icon class="favorite-icon">favorite</mat-icon>
+                                </button>
+                            </div>
+                            <mat-card-content>
+                                <h2>$708910</h2>
+                                <p>3517 W.Gray St.Utica,Pennsylvania57867</p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button>
+                                    <mat-icon>home</mat-icon>2
+                                </button>
+                                <button mat-button>
+                                    <mat-icon>stars</mat-icon>2
+                                </button>
+                                <button mat-button>
+                                    <mat-icon>store</mat-icon>2
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                    <div class="mt-2">
+                        <!-- <button mat-stroked-button> ... 15 More</button> -->
+                        <button mat-stroked-button class="buttons"> ... 15 More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <mat-card>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d248849.84916296526!2d77.6309395!3d12.
+                        9539974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1653665512217!5m2!1sen!2sin"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card>
+</div>

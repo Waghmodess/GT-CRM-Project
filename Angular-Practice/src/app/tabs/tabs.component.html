@@ -1,0 +1,38 @@
+<mat-tab-group (selectedTabChange)="myTabSelectedTabChange($event)">
+    <mat-tab label="Add User Data">
+        <app-crud-application (messageEvent)="receiveMessage($event)"></app-crud-application>
+    </mat-tab>
+    <mat-tab label="User Data">
+        <app-material-table [tableData]="message"></app-material-table>
+    </mat-tab>
+    <mat-tab label="Third">
+        <button mat-button (click)="openDialog()" mat-raised-button matTooltip="Open Dialog through this button."
+            aria-label="Button that displays a tooltip when focused or hovered over">
+            Launch dialog
+        </button>
+        <!-- <button mat-button (click)="openDialog()">Launch dialog</button> -->
+        <mat-card class="mt-4">
+            <!-- Add data to dialog -->
+            <ol>
+                <li>
+                    <mat-form-field appearance="fill">
+                        <mat-label>What's your name?</mat-label>
+                        <input matInput [(ngModel)]="name">
+                    </mat-form-field>
+                </li>
+                <li>
+                    <button mat-raised-button (click)="openDialogg()">Pick one</button>
+                </li>
+                <li *ngIf="animal">
+                    You chose: <i>{{animal}}</i>
+                </li>
+            </ol>
+        </mat-card>
+        <!-- for sibling -->
+        <!-- <button (click)="newMassage()" class="btn btn-primary">sibling</button> -->
+    </mat-tab>
+
+    <mat-tab label="Reusable">
+        <app-rusable></app-rusable>
+    </mat-tab>
+</mat-tab-group>

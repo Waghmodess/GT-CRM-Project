@@ -1,0 +1,38 @@
+<!-- <p>pipe works!</p> -->
+<h1>{{title}}</h1>
+
+<h3>1]. Titlecase :- {{title | titlecase}}</h3>
+
+<h3>2]. Uppercase :- {{title | uppercase}}</h3>
+
+<h3>3]. Lowercase :- {{title | lowercase}}</h3>
+
+<h1> Date With Pipes</h1>
+
+<h4>Original Date: {{date}}</h4>
+<h4>Standard Format: {{date | date}}</h4>
+<h4>Short Date: {{date | date:'short'}}</h4>
+<h4>Medium Date: {{date | date:'medium'}}</h4>
+<h4>Full Date: {{date | date:'full'}}</h4>
+
+<h1>Slice in Pipes</h1>
+
+<h4>{{title | slice:3}}</h4>
+<h4>{{title | slice:2:10}}</h4>
+
+<h1>Multiple pipes:</h1>
+
+<h4>Orignal Title: {{title}}</h4>
+<h4>Multiple pipes: {{title | uppercase | slice:2:15}}</h4>
+
+<h1>Currency in Pipe</h1>
+<h4>Original Text: {{salary}}</h4>
+<h4>Ind Currency: {{salary | currency:'INR'}}</h4>
+<h4>USD Currency: {{salary | currency:'USD'}}</h4>
+
+<h1>Custom Pipe</h1>
+<p>Conerting Indian Rupee 10 Into Dollar</p>
+<h4>{{10 | customPipe}}</h4>
+
+<p>Another mathod through arguments.</p>
+<h4>{{10 | customPipe:100}}</h4>

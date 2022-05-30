@@ -1,0 +1,100 @@
+<p>dialog works!</p>
+<h1 mat-dialog-title>Dialog with elements</h1>
+<mat-divider [vertical]="true"></mat-divider>
+<div mat-dialog-content>
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>My App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>share</mat-icon>
+        </button>
+    </mat-toolbar>
+    <mat-list>
+        <mat-divider></mat-divider>
+    </mat-list>
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+            </mat-menu>
+        </mat-grid-tile>
+        <mat-grid-tile>2</mat-grid-tile>
+        <mat-grid-tile>3</mat-grid-tile>
+        <mat-grid-tile>4</mat-grid-tile>
+    </mat-grid-list>
+
+    <!-- Tree -->
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+            {{node.name}}
+        </mat-tree-node>
+        <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+            <div class="mat-tree-node">
+                <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+                    <mat-icon class="mat-icon-rtl-mirror">
+                        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                    </mat-icon>
+                </button>
+                {{node.name}}
+            </div>
+            <div [class.example-tree-invisible]="!treeControl.isExpanded(node)" role="group">
+                <ng-container matTreeNodeOutlet></ng-container>
+            </div>
+        </mat-nested-tree-node>
+    </mat-tree>
+
+    <mat-checkbox [(ngModel)]="centered" class="example-ripple-checkbox">Centered</mat-checkbox>
+    <mat-checkbox [(ngModel)]="disabled" class="example-ripple-checkbox">Disabled</mat-checkbox>
+    <mat-checkbox [(ngModel)]="unbounded" class="example-ripple-checkbox">Unbounded</mat-checkbox>
+
+    <mat-form-field class="example-ripple-form-field" appearance="fill">
+        <input matInput [(ngModel)]="radius" type="number" placeholder="Radius">
+    </mat-form-field>
+    <mat-form-field class="example-ripple-form-field" appearance="fill">
+        <input matInput [(ngModel)]="color" type="text" placeholder="Color">
+    </mat-form-field>
+    <div class="example-ripple-container mat-elevation-z4" matRipple [matRippleCentered]="centered"
+        [matRippleDisabled]="disabled" [matRippleUnbounded]="unbounded" [matRippleRadius]="radius"
+        [matRippleColor]="color">
+        Click me
+    </div>
+
+
+    <!-- SnackBar -->
+    <mat-card class="mt-3">
+        <mat-form-field appearance="fill" class="mx-4">
+            <mat-label>Message</mat-label>
+            <input matInput value="Disco party!" #message>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Action</mat-label>
+            <input matInput value="Dance" #action>
+        </mat-form-field>
+        <button mat-stroked-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button>
+    </mat-card>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+</div>
+
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->

@@ -1,0 +1,52 @@
+<h1>Directives In Angular</h1>
+
+<h2>A.Structural Directives</h2>
+
+<h3>1.*ngIf</h3>
+
+<div *ngIf="(age>18) || showData">
+    Your age is {{age}} and your are Eligible.
+</div>
+
+<h3>2.*ngFor</h3>
+
+<select>
+    <option *ngFor="let sk of course">{{ sk }}</option>
+</select>
+
+<h3>3.*ngSwitch</h3>
+
+<div [ngSwitch]="number">
+    <div *ngSwitchCase="1">Switch Case One</div>
+    <div *ngSwitchCase="2">Switch Case Two</div>
+    <div *ngSwitchDefault=>Default Switch Case</div>
+</div>
+
+<h2>B.Attribute Directives</h2>
+
+<h3>1.ngClass</h3>
+
+<div class="mt-3" [ngClass]="data">
+    <h4>This is attribute directives by ngClass</h4>
+</div>
+
+<div class="mt-3" [ngClass]="showData ? 'text' : 'test'">
+    <h4>This is also ngClass Attribute directive with ternory operator</h4>
+</div>
+<h3>2.ngStyle</h3>
+
+<div class="mt-3"
+    [ngStyle]="{'color':'red', 'font-size': '20px', 'background-color': 'skyblue','border':'1px solid black'}">
+    <h4>This is ngStyle Attribute Directive. </h4>
+</div>
+
+<div class="mt-3" [ngStyle]="myStyle">
+    <h4>This is ngStyle Attribute Directive.</h4>
+</div>
+
+<h2>C. Custom Directives</h2>
+<h3>This Is Normal Heading.</h3>
+
+<h3 appDirectives>This Is Custom Directive Heading</h3>
+
+<h3 appDirectives>We con also show / hide the element using Custom Directive.</h3>

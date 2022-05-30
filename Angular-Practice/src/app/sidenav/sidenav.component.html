@@ -1,0 +1,118 @@
+<!-- <p>sidenav works!</p> -->
+<div class="card">
+    <div class="card-body">
+        <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+            <mat-icon *ngIf="!sidenav.opened">
+                menu
+            </mat-icon>
+            <mat-icon *ngIf="sidenav.opened" class="mx-2">
+                close
+            </mat-icon>
+        </button>
+
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav="matSidenav">
+                <h2>Following Component Shown <br> In Sidenav Content</h2>
+                <h3>Chips</h3>
+                <h3>Stepper</h3>
+                <h3>Slider</h3>
+                <h3>Sidetoggle</h3>
+            </mat-sidenav>
+
+            <mat-sidenav-content>
+                <!-- chips in sidenav -->
+                <mat-form-field class="example-chip-list" appearance="fill">
+                    <mat-label>Favorite Fruits</mat-label>
+                    <mat-chip-list #chipList aria-label="Fruit selection">
+                        <mat-chip *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+                            {{fruit.name}}
+                            <button matChipRemove>
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-chip>
+                        <input placeholder="New fruit..." [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                            (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                </mat-form-field>
+
+
+                <!-- Stepper in sidenav -->
+                <mat-stepper #stepper>
+                    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Fill out your name</ng-template>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Name</mat-label>
+                                <input matInput placeholder="Last name, First name" formControlName="firstCtrl"
+                                    required>
+                            </mat-form-field>
+                            <div>
+                                <!-- <p>Go to a different step to see the error state</p> -->
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+
+                    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template matStepLabel>Fill out your address</ng-template>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Address</mat-label>
+                                <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
+                                    required>
+                            </mat-form-field>
+                            <div>
+                                <!-- <p>Go to a different step to see the error state</p> -->
+                                <!-- <button mat-button matStepperPrevious>Back</button> -->
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+
+
+
+                    <mat-step [stepControl]="firstFormGroup" errorMessage="Comment is required.">
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Fill out your comment</ng-template>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Name</mat-label>
+                                <input matInput placeholder="Enter Your Comment" formControlName="firstCtrl" required>
+                            </mat-form-field>
+                            <div>
+                                <!-- <p>Go to a different step to see the error state</p> -->
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+
+                    <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        <p>You are now done.</p>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                        </div>
+                    </mat-step>
+                </mat-stepper>
+
+                <!-- Slider in Sidenav -->
+                <div class="slider">
+                    <!-- <mat-slider aria-label="unit(s)"></mat-slider> -->
+                    <mat-label>The value is{{value}}</mat-label>
+                    <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min"
+                        [step]="step" [thumbLabel]="thumbLabel" [tickInterval]="tickInterval" [(ngModel)]="value"
+                        [vertical]="vertical" aria-labelledby="example-name-label">
+                    </mat-slider>
+                </div>
+
+                <!-- Slide-toggle in sidenav -->
+                <div class="side-toggle mt-4">
+                    <mat-slide-toggle [(ngModel)]="model">Slide me!</mat-slide-toggle>
+                    <div>{{model}}</div>
+                </div>
+
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+</div>
