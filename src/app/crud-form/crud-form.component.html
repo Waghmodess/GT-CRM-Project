@@ -1,26 +1,38 @@
-<!-- <p>crud-form works!</p> -->
 <div class="container">
     <mat-card>
-        <form>
-            <mat-form-field class="input-field" appearance="fill" formControlName="userId">
+        <form [formGroup]="addData">
+            <mat-form-field class="input-field" appearance="fill">
                 <mat-label>UserId</mat-label>
-                <input matInput placeholder="UserId">
+                <input matInput placeholder="UserId" formControlName="userId"
+                    [ngClass]="{ 'is-invalid': submitted && userId.errors }" />
+                <mat-error *ngIf="userId.invalid">Enter UserID</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="input-field" appearance="fill" formControlName="id">
+            <mat-form-field class="input-field" appearance="fill">
                 <mat-label>ID</mat-label>
-                <input matInput placeholder="ID">
+                <input matInput placeholder="ID" formControlName="id"
+                    [ngClass]="{ 'is-invalid': submitted && id.errors }" />
+                <mat-error *ngIf="id.invalid">Enter ID</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="input-field" appearance="fill" formControlName="title">
+            <mat-form-field class="input-field" appearance="fill">
                 <mat-label>Title</mat-label>
-                <input matInput placeholder="Title">
+                <input matInput placeholder="Title" formControlName="title"
+                    [ngClass]="{ 'is-invalid': submitted && title.errors }" />
+                <mat-error *ngIf="title.invalid">Enter Title</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="input-field" appearance="fill" formControlName="body">
+            <mat-form-field class="input-field" appearance="fill">
                 <mat-label>Body</mat-label>
-                <input matInput placeholder="Body">
+                <input matInput placeholder="Body" formControlName="body"
+                    [ngClass]="{ 'is-invalid': submitted && body.errors }" />
+                <mat-error *ngIf="body.invalid">Enter Body</mat-error>
             </mat-form-field>
+
+            <div class="example-button-row mt-4">
+                <button mat-raised-button color="primary">Submit</button>
+                <!-- <button mat-raised-button color="accent"class="mx-2">Reset</button> -->
+            </div>
         </form>
     </mat-card>
 </div>

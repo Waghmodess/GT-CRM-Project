@@ -32,7 +32,7 @@ export class MaterialTableComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  subscription: Subscription;;
+  subscription: Subscription;
 
   constructor(private dataService: DataServiceService) { }
 

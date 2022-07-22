@@ -9,6 +9,9 @@ import { CrudApplicationComponent } from './crud-application/crud-application.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+// For Loging
+import { AngularFireModule } from '@angular/fire/compat'
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -43,16 +46,22 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { DialogDataComponent } from './dialog-data/dialog-data.component';
 import { DirectivesDirective } from './directives.directive';
 import { ReusableComponent } from './reusable/reusable.component';
 import { PipeComponent } from './pipe/pipe.component';
 import { CustomPipePipe } from './custom-pipe.pipe';
-import { RusableComponent } from './rusable/rusable.component';
 import { RoutingComponent } from './routing/routing.component';
 import { ServiceComponent } from './service/service.component';
 import { TrackingDeviceComponent } from './tracking-device/tracking-device.component';
 import { CrudFormComponent } from './crud-form/crud-form.component';
+import { SortPipe } from './sort.pipe';
+import { environment } from 'src/environments/environment';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuardGuard } from './auth-guard.guard';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -64,16 +73,20 @@ import { CrudFormComponent } from './crud-form/crud-form.component';
     TabsComponent,
     SidenavComponent,
     DialogComponent,
-    DialogDataComponent,
     DirectivesDirective,
     ReusableComponent,
     PipeComponent,
     CustomPipePipe,
-    RusableComponent,
     RoutingComponent,
     ServiceComponent,
     TrackingDeviceComponent,
-    CrudFormComponent
+    CrudFormComponent,
+    SortPipe,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
 
   ],
   imports: [
@@ -89,11 +102,14 @@ import { CrudFormComponent } from './crud-form/crud-form.component';
     MatTableModule, MatPaginatorModule, MatListModule, MatExpansionModule, MatProgressBarModule,
     MatProgressSpinnerModule, MatTabsModule, MatChipsModule, MatSidenavModule, MatIconModule, MatStepperModule,
     MatSliderModule, MatSlideToggleModule, MatDialogModule, MatToolbarModule, MatMenuModule, MatDividerModule,
-    MatTreeModule, MatTooltipModule, MatRippleModule, MatSnackBarModule
+    MatTreeModule, MatTooltipModule, MatRippleModule, MatSnackBarModule,
+
+
+    AngularFireModule.initializeApp(environment.firebase)
 
 
   ],
-  providers: [],
+  providers: [AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
