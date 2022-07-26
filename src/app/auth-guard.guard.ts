@@ -13,13 +13,10 @@ export class AuthGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // return false;
     return this.ser.user.pipe(
       take(1),
       map(res => {
-        // return res ? true : false;
         if (res) {
-          console.log("Canactivate Successful");
           return true;
         }
         return this.router.createUrlTree([""]);

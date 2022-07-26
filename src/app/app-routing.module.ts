@@ -16,25 +16,37 @@ import { ServiceComponent } from './service/service.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { TrackingDeviceComponent } from './tracking-device/tracking-device.component';
-import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+
+const navigateToLogin = () => redirectUnauthorizedTo(['/login']);
+const isLoggedIn = () => redirectLoggedInTo(['dashboard']);
+const isRegistered = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [
 
-  // For Login:-
-
   { path: "", redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+
+  {
+    path: 'login', component: LoginComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: isLoggedIn }
+  },
+  {
+    path: 'register', component: RegisterComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: isRegistered }
+  },
   {
     path: 'dashboard', component: DashboardComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin }
+    data: { authGuardPipe: navigateToLogin }
   },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'dashboard/data-binding', component: DataBindingComponent },
 
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'verify-email', component: VerifyEmailComponent },
+  { path: 'dashboard/data-binding', component: DataBindingComponent },
   { path: 'dashboard/tabs', component: TabsComponent },
   { path: 'dashboard/data-binding', component: DataBindingComponent },
   { path: 'dashboard/directive', component: DirectiveComponent },
