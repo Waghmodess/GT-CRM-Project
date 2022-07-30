@@ -6,6 +6,8 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class AuthService {
 
   user = new BehaviorSubject<boolean>(false);
@@ -14,53 +16,25 @@ export class AuthService {
 
   // Login Method:
 
-  // login(email: string, password: string) {
-  //   this.fireauth.signInWithEmailAndPassword(email, password).then((res: any) => {
-  //     localStorage.setItem('token', 'true');
-  //     console.log("Loging Successful");
-  //     console.log(res);
-  //     this.router.navigate(['/dashboard']);
-  //   }, err => {
-  //     alert(err.massage);
-  //     this.router.navigate(['/login']);
-  //   });
-  // }
-
   login(email: string, password: string) {
-    this.fireauth.signInWithEmailAndPassword(email, password).then(res => {
+    this.fireauth.signInWithEmailAndPassword(email, password).then((res: any) => {
       localStorage.setItem('token', 'true');
-
-      if (res.user?.emailVerified == true) {
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.router.navigate(['/verify-email']);
-      }
+      console.log("Loging Successful");
+      console.log(res);
+      this.router.navigate(['/dashboard']);
     }, err => {
       alert(err.massage);
       this.router.navigate(['/login']);
     });
   }
 
+
   // Register Method:
 
-  // register(email: string, password: string) {
-  //   this.fireauth.createUserWithEmailAndPassword(email, password).then(async () => {
-  //     alert('Registration Successful');
-  //     await this.logout();
-  //     this.router.navigate(['/login']);
-  //   }, err => {
-  //     alert(err.message);
-  //     this.router.navigate(['/register']);
-  //   });
-  // }
-
-
   register(email: string, password: string) {
-    this.fireauth.createUserWithEmailAndPassword(email, password).then(async (res: any) => {
+    this.fireauth.createUserWithEmailAndPassword(email, password).then(async () => {
       alert('Registration Successful');
       await this.logout();
-      this.router.navigate(['/login']);
-      this.sendEmailForVerification(res.user);
       this.router.navigate(['/login']);
     }, err => {
       alert(err.message);
@@ -86,15 +60,6 @@ export class AuthService {
       this.router.navigate(['/verify-email'])
     }, err => {
       alert("Something went wrong");
-    })
-  }
-
-  // email verification
-  sendEmailForVerification(user: any) {
-    user.sendEmailForVerification().then((res: any) => {
-      this.router.navigate(['/verify-email'])
-    }, (err: any) => {
-      alert('Something went wrong. Not able to send mail to your mail.');
     })
   }
 }

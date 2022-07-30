@@ -19,6 +19,7 @@ import { TrackingDeviceComponent } from './tracking-device/tracking-device.compo
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { RoleGuardGuard } from './role-guard.guard';
 
 const navigateToLogin = () => redirectUnauthorizedTo(['/login']);
 const isLoggedIn = () => redirectLoggedInTo(['dashboard']);
@@ -30,7 +31,7 @@ const routes: Routes = [
 
   {
     path: 'login', component: LoginComponent,
-    canActivate: [AngularFireAuthGuard],
+    canActivate: [AngularFireAuthGuard, RoleGuardGuard],
     data: { authGuardPipe: isLoggedIn }
   },
   {
@@ -44,11 +45,14 @@ const routes: Routes = [
     data: { authGuardPipe: navigateToLogin }
   },
 
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email', component: VerifyEmailComponent },
-  { path: 'dashboard/data-binding', component: DataBindingComponent },
+  {
+    path: 'dashboard/data-binding', component: DataBindingComponent,
+    canActivate: [AngularFireAuthGuard, RoleGuardGuard],
+    data: {
+      expectedRoles: ['User']
+    }
+  },
   { path: 'dashboard/tabs', component: TabsComponent },
-  { path: 'dashboard/data-binding', component: DataBindingComponent },
   { path: 'dashboard/directive', component: DirectiveComponent },
   { path: 'dashboard/sidenav', component: SidenavComponent },
   { path: 'dashboard/pipe', component: PipeComponent },
@@ -60,7 +64,8 @@ const routes: Routes = [
   { path: 'dashboard/reusable', component: ReusableComponent },
   { path: 'dashboard/tracking-device', component: TrackingDeviceComponent },
   { path: 'dashboard/routing', component: RoutingComponent },
-
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'verify-email', component: VerifyEmailComponent },
 ];
 
 @NgModule({
